@@ -32,3 +32,49 @@ class Queue {
     return node.value;
   }
 }
+
+function peek(queue){
+  if (queue.first === null) {
+    return 'Cannot display first item of an empty queue';
+  }
+  return queue.first;
+}
+
+function isEmpty(queue){
+  if(queue.first === null) {
+    return true;
+  }
+  return false;
+}
+
+function display(queue){
+  if (queue.first === null) {
+    return 'Cannot display an empty queue';
+  }
+  let currNode = queue.first;
+  let queueString = '';
+  while (currNode.next !== null) {
+    queueString += `${currNode.value} => `;
+    currNode = currNode.next;
+  }
+  queueString += `${currNode.value}`;
+  return queueString;
+}
+
+function main() {
+  let starTrekQ = new Queue;
+  starTrekQ.enqueue('Kirk');
+  starTrekQ.enqueue('Spock');
+  starTrekQ.enqueue('Uhura');
+  starTrekQ.enqueue('Sulu');
+  starTrekQ.enqueue('Checkov');
+  // console.log(peek(starTrekQ));
+  // console.log(isEmpty(starTrekQ));
+  // console.log(display(starTrekQ));
+  starTrekQ.dequeue();
+  starTrekQ.dequeue();
+  console.log(display(starTrekQ));
+  return starTrekQ;
+}
+
+console.log(main());

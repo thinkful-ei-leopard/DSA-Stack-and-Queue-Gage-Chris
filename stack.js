@@ -124,19 +124,24 @@ function matchingParenths2(string){
   }
 }
 
+function queueFromStack(stack) {
+  let queuedStack = new Stack;
+  let currNode = stack.top;
+  while(currNode.next !== null) {
+    queuedStack.push(currNode.value);
+    currNode = currNode.next;
+  }
+  queuedStack.push(currNode.value);
+  return queuedStack;
+}
+
 function main() {
   let starTrek = new Stack;
   starTrek.push('Kirk');
   starTrek.push('Spock');
   starTrek.push('McCoy');
   starTrek.push('Scotty');
-  starTrek.pop();
-  starTrek.pop();
-  console.log(matchingParenths2('())'));
-  console.log(matchingParenths2('(('));
-  console.log(matchingParenths2('()'));
-  console.log(matchingParenths2('(Parentheses) are cool'));
-  return display(starTrek);
+  return display(queueFromStack(starTrek));
 }
 
 console.log(main());
